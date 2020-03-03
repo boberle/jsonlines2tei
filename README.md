@@ -46,8 +46,6 @@ It is used for some coreference resolution systems, such as:
 
 ## Usage
 
-### Running the script
-
 The jsonlines format can contain many documents: each document will be converted into two files: one for the text, with a `.xml` suffix, and one for the stand-off annotations, with a `-urs.xml` suffix.  Each type of files can be stored in the same directory, or in two distinct directories.
 
 The command:
@@ -65,10 +63,10 @@ would store all the documents from `INPUT_FILE` into two directories: `xml` for 
 The files are named according to the `doc_key` key defined in each document of the jsonlines file.
 
 
-### Example of a full automatic annotation process, from text to TXM
+## Example of a full automatic annotation process, from text to TXM
 
 
-#### Setup
+### Setup
 
 Assuming you have a text in raw format, you will need to convert it to a jsonlines format.  Use the the [`text2jsonlines` script](https://github.com/boberle/corefconversion).  This will tokenize the text and produce a `.jsonlines`.
 
@@ -92,7 +90,7 @@ python3 text2jsonlines.py stendhal.txt -o stendhal.jsonlines
 
 
 
-#### Automatic annotation of the text
+### Automatic annotation of the text
 
 Assuming you have [donwloaded and installed](http://github.com/boberle/cofr) COFR (COreference resolution tool for FRench) (see the "predict" section of the README file), you just have to run the following command to get a `stendhal-predicted.jsonlines` file:
 
@@ -101,7 +99,7 @@ python3 predict.py fr_ment,fr_coref stendhal.jsonlines stendhal-predicted.jsonli
 ```
 
 
-#### Import into TXM
+### Import into TXM
 
 Assuming you have [downloaded and installed](http://textometrie.ens-lyon.fr/) TXM (on any plateform), with the URS extension, you need to convert the jsonlines into a set of TEI-URS files, in order to import them into TXM.  Use the `jsonlines2tei.py` script from this repository to do this:
 
@@ -128,7 +126,7 @@ Note that paragraphs have been kept, that POS have been added (with the `text2js
 
 
 
-#### Coreference analysis within TXM
+### Coreference analysis within TXM
 
 The URS extension is well documented in a more than 30-page long manual available here: https://zenodo.org/record/3267345.
 
@@ -139,9 +137,5 @@ Please refer to the manual for more information on how to display, modify, and a
 ## Acknowledgment
 
 The [COFR tool](https://github.com/boberle/cofr), the [URS extension](https://zenodo.org/record/3267345) of [TXM](http://textometrie.ens-lyon.fr/) and this `jsonlines2tei.py` script have been developped within the [Democrat project](https://anr.fr/Projet-ANR-15-CE38-0008), from the French National Research Agency (ANR-15-CE38-0008).
-
-
-
-
 
 
